@@ -1,67 +1,27 @@
-#include <float.h>
-#include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <string.h>
-bool find_minimum(const int num[], size_t arr_len, int *min) {
-  if (num == NULL || min == NULL || arr_len == 0) {
-    return false;
-  }
 
-  int minimum = num[0];
-  for (size_t i = 1; i < arr_len; ++i) {
-    if (num[i] < minimum) {
-      minimum = num[i];
+bool binary_search(int target, int nums_list[], size_t nums_len) {
+  size_t low_bound = 0;
+  size_t high_bound = nums_len - 1;
+
+  while (low_bound <= high_bound) {
+    size_t mid = high_bound + (low_bound - high_bound) / 2;
+    if (nums_list[mid] == target) {
+      return true;
+    }
+    else if (nums_list[mid] > target) {
+      low_bound = mid + 1;
+    } else {
+      high_bound = mid - 1;
     }
   }
-
-  *min = minimum;
-  return true;
-}
-
-typedef enum {
-  OTHER = -1,
-  FITNESS_INFLUENCER,
-  COSMETIC_INFLUENCER,
-} InfluencerType;
-
-InfluencerType get_influencer_type(const char *str) {
-  if (strcmp(str, "fitness") == 0) {
-    return FITNESS_INFLUENCER;
-  }
-  if (strcmp(str, "cosmetic") == 0) {
-    return COSMETIC_INFLUENCER;
-  }
-  return OTHER;
-}
-
-int get_follower_prediction(int follower_count, const char *infuencer_type,
-                            int num_months) {
-
-  switch (get_influencer_type(infuencer_type)) {
-  case FITNESS_INFLUENCER:
-    follower_count = (follower_count)*pow(4, num_months);
-    break;
-  case COSMETIC_INFLUENCER:
-    follower_count = (follower_count)*pow(3, num_months);
-    break;
-  case OTHER:
-    follower_count = (follower_count)*pow(2, num_months);
-    break;
-  }
-  return follower_count;
+  return false;
 }
 
 int main(void) {
-  int num[] = {10, 11, 12, 5, 14, 15};
-  size_t arr_len = sizeof(num) / sizeof(num[0]);
-
-  int min;
-  if (find_minimum(num, arr_len, &min)) {
-    printf("%d\n", min);
-  } else {
-    fprintf(stderr, "empty array\n");
-  }
-  return 0;
+  int nums_list[] = {1,2,3,4,5,6,7,8,9};
+  size_t nums_len = sizeof(nums_list) / sizeof(nums_list[0]);
+  printf("%s\n", binary_search(5, nums_list, nums_len) ? "true": "false");
 }

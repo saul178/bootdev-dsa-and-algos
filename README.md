@@ -1,7 +1,7 @@
 # The beginning of dsa and algorithms course in boot.dev
 - [x] Intro
 - [x] Math
-- [ ] Big O Analysis
+- [x] Big O Analysis
 - [ ] Sorting Algorithms
 - [ ] Exponential Time
 - [ ] DSA Intro
