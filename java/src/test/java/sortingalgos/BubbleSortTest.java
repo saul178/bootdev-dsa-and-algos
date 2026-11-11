@@ -20,7 +20,7 @@ public class BubbleSortTest {
 	@Test
 	void handlesEmptyAndSingleValue() {
 		int[] emptyInput = {};
-		int[] singleInput = {1};
+		int[] singleInput = { 1 };
 		assertArrayEquals(emptyInput, sortingalgos.SortingAlgos.bubbleSort(emptyInput));
 		assertArrayEquals(singleInput, sortingalgos.SortingAlgos.bubbleSort(singleInput));
 	}
