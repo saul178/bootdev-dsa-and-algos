@@ -1,6 +1,6 @@
 package sortingalgos;
 
-class SortingAlgos {
+class BubbleSort {
 	public static int[] bubbleSort(int[] nums) {
 		boolean swapping = true;
 		int end = nums.length;
