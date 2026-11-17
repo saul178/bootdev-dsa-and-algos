@@ -50,21 +50,21 @@ int *insertion_sort(int *nums, size_t nums_len) {
   return nums;
 }
 
-int test_insertion_sort(int *input, size_t input_len, int *expected,
-                        size_t expected_len) {
+int test_insertion_sort(const char *name, int *input, size_t input_len,
+                        int *expected, size_t expected_len) {
   if (input_len != expected_len) {
-    printf("[ERROR] arrays aren't equal size exiting...");
+    printf("[ERROR] %s arrays aren't equal size exiting...", name);
     return EXIT_FAILURE;
   }
 
   insertion_sort(input, input_len);
   if (!equal_arrays(input, expected, input_len, expected_len)) {
-    printf("[ERROR] test failed array values are not equal\n");
+    printf("[ERROR] test %s failed array values are not equal\n", name);
     print_array(NULL, input, input_len);
     print_array(NULL, expected, expected_len);
     return EXIT_FAILURE;
   } else {
-    printf("[INFO] test passed! Arrays are equal and sorted\n");
+    printf("[INFO] test %s passed! Arrays are equal and sorted\n", name);
     print_array(NULL, input, input_len);
     print_array(NULL, expected, expected_len);
     return EXIT_SUCCESS;
@@ -72,6 +72,7 @@ int test_insertion_sort(int *input, size_t input_len, int *expected,
 }
 
 typedef struct {
+  const char *name;
   int input[MAX_LEN];
   int expected[MAX_LEN];
   int len;
@@ -79,35 +80,38 @@ typedef struct {
 
 int main() {
   TestCases tests[] = {{
+                           .name = "repeated values",
 
                            .input = {10, 10, 10, 10, 10, 10},
                            .expected = {10, 10, 10, 10, 10, 10},
                            .len = 6,
                        },
                        {
+                           .name = "single value",
                            .input = {10},
                            .expected = {10},
                            .len = 1,
 
                        },
                        {
+                           .name = "unsorted values with negatives",
                            .input = {10, -2, 32, 32, 0, 1},
                            .expected = {-2, 0, 1, 10, 32, 32},
                            .len = 6,
 
                        },
-		{
-			.input = {},
-			.expected = {},
-			.len = 0,
-		}
-	};
+                       {
+                           .name = "empty value",
+                           .input = {},
+                           .expected = {},
+                           .len = 0,
+                       }};
   size_t tests_len = sizeof(tests) / sizeof(tests[0]);
 
   for (size_t i = 0; i < tests_len; ++i) {
     printf("-----------------------------------------------\n");
-    test_insertion_sort(tests[i].input, tests[i].len, tests[i].expected,
-                        tests[i].len);
+    test_insertion_sort(tests[i].name, tests[i].input, tests[i].len,
+                        tests[i].expected, tests[i].len);
     printf("-----------------------------------------------\n");
   }
 
