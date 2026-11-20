@@ -81,7 +81,6 @@ typedef struct {
 int main() {
   TestCases tests[] = {{
                            .name = "repeated values",
-
                            .input = {10, 10, 10, 10, 10, 10},
                            .expected = {10, 10, 10, 10, 10, 10},
                            .len = 6,

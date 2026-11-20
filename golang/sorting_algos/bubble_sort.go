@@ -1,4 +1,4 @@
-package main
+package sortingalgos
 
 func BubbleSort(nums []int) []int {
 	swap := true

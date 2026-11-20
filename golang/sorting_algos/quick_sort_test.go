@@ -1,11 +1,11 @@
-package main
+package sortingalgos
 
 import (
 	"slices"
 	"testing"
 )
 
-func TestMergeSort(t *testing.T) {
+func TestQuickSort(t *testing.T) {
 	testCases := []struct {
 		name     string
 		input    []int
@@ -32,18 +32,17 @@ func TestMergeSort(t *testing.T) {
 			expected: []int{1, 2, 5, 7, 9},
 		},
 		{
-			name: "unsorted with negatives",
-			input: []int{10,2,-3,40,-100,2000,69,-420},
-			expected: []int{-420,-100,-3,2,10,40,69,2000},
+			name:     "unsorted with negatives",
+			input:    []int{10, 2, -3, 40, -100, 2000, 69, -420},
+			expected: []int{-420, -100, -3, 2, 10, 40, 69, 2000},
 		},
 	}
 
-	for _, tt :=  range testCases {
+	for _, tt := range testCases {
 		t.Run(tt.name, func(t *testing.T) {
-			got := mergeSort(tt.input)
-
-			if !slices.Equal(tt.expected, got) {
-				t.Errorf("test failed got: %v, expected %v", got, tt.expected)
+			quickSort(tt.input, 0, len(tt.input) - 1)
+			if !slices.Equal(tt.input, tt.expected) {
+				t.Errorf("test failed got: %v, expected %v", tt.input, tt.expected)
 			}
 		})
 
