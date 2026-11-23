@@ -3,7 +3,7 @@
 - [x] Intro
 - [x] Math
 - [x] Big O Analysis
-- [ ] Sorting Algorithms
+- [x] Sorting Algorithms
 - [ ] Exponential Time
 - [ ] DSA Intro
 - [ ] Stacks
