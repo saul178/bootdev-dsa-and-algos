@@ -4,7 +4,7 @@
 - [x] Math
 - [x] Big O Analysis
 - [x] Sorting Algorithms
-- [ ] Exponential Time
+- [x] Exponential Time
 - [ ] DSA Intro
 - [ ] Stacks
 - [ ] Queues
