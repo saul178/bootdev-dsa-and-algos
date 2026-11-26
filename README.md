@@ -5,8 +5,8 @@
 - [x] Big O Analysis
 - [x] Sorting Algorithms
 - [x] Exponential Time
-- [ ] DSA Intro
-- [ ] Stacks
+- [x] DSA Intro
+- [x] Stacks
 - [ ] Queues
 - [ ] Linked Lists
 - [ ] Binary Trees
